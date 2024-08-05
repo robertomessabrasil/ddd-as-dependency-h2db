@@ -1,0 +1,4 @@
+io/github/robertomessabrasil/dddad/infra/h2db/repository/user/Transaction.class
+io/github/robertomessabrasil/dddad/infra/h2db/repository/user/entity/UserJPAEntity.class
+io/github/robertomessabrasil/dddad/infra/h2db/repository/user/ITransaction.class
+io/github/robertomessabrasil/dddad/infra/h2db/repository/user/UserRepository.class

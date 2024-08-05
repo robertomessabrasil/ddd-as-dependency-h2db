@@ -1,0 +1,4 @@
+/home/wardog1/work/ddd-as-dependency-h2db/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/ITransaction.java
+/home/wardog1/work/ddd-as-dependency-h2db/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/Transaction.java
+/home/wardog1/work/ddd-as-dependency-h2db/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/UserRepository.java
+/home/wardog1/work/ddd-as-dependency-h2db/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/entity/UserJPAEntity.java
