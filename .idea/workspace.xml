@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="216d3196-d619-47ce-a852-35a46abdb84b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/entity/UserJPAEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/entity/UserJPAEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/io/github/robertomessabrasil/ddd/infrastructure/h2db/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/github/robertomessabrasil/ddd/infrastructure/h2db/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ddd-as-dependency-h2db-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ddd-as-dependency-h2db-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/io/github/robertomessabrasil/ddd/infrastructure/h2db/UserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/io/github/robertomessabrasil/ddd/infrastructure/h2db/UserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/io/github/robertomessabrasil/ddd/infrastructure/h2db/UserTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +50,7 @@
     &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
     &quot;Maven.clean, package.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hibernate&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/wardog1/work/ddd-as-dependency-h2db/src/main/java/io/github/robertomessabrasil/ddd/infra&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/wardog1/tools/rabbitmq/demo-backend-api/pom.xml&quot;,

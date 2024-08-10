@@ -22,14 +22,10 @@ public class UserRepository implements IUserRepository {
         userJPAEntity.setEmail(userEntity.getEmail());
         userJPAEntity.setRole(userEntity.getRole().getRoleEnum().getValue());
 
-        try {
-            this.transaction.getEntityManager().persist(userJPAEntity);
-            this.transaction.getEntityManager().flush();
-        } catch (RuntimeException ex0) {
-            throw new InfrastructureException(ex0);
-        }
-        UserEntity createdUserEntity = new UserEntity();
+        this.transaction.getSession().persist(userJPAEntity);
+        this.transaction.getSession().flush();
 
+        UserEntity createdUserEntity = new UserEntity();
         createdUserEntity.setId(userJPAEntity.getId());
         createdUserEntity.setName(userEntity.getName());
         createdUserEntity.setEmail(userEntity.getEmail());
@@ -41,7 +37,7 @@ public class UserRepository implements IUserRepository {
     @Override
     public Optional<UserEntity> findById(int userId, EventObserver eventObserver) throws InfrastructureException {
 
-        UserJPAEntity userJPAEntity = this.transaction.getEntityManager().find(UserJPAEntity.class, userId);
+        UserJPAEntity userJPAEntity = this.transaction.getSession().find(UserJPAEntity.class, userId);
         if (userJPAEntity == null) {
             return Optional.empty();
         }

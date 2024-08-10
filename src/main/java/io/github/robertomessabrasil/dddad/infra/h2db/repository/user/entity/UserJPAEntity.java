@@ -9,9 +9,9 @@ public class UserJPAEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "name", unique = true)
+    @Column(name = "name")
     private String name;
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
     @Column(name = "role")
     private int role;

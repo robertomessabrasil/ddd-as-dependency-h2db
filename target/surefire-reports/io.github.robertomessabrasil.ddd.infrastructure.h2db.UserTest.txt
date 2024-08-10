@@ -1,18 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 1, Time elapsed: 2.317 s <<< FAILURE! - in io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest
-givenParameters_createUser  Time elapsed: 0.103 s  <<< ERROR!
-io.github.robertomessabrasil.dddad.domain.exception.InfrastructureException: 
-org.hibernate.exception.ConstraintViolationException: could not execute statement [Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_B ON PUBLIC.USER_USER(NAME NULLS FIRST) VALUES ( /* 1 */ 'Roberto Messa' )"; SQL statement:
-insert into user_user (email,name,role,id) values (?,?,?,default) [23505-224]] [insert into user_user (email,name,role,id) values (?,?,?,default)]
-	at io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest.givenParameters_createUser(UserTest.java:57)
-Caused by: org.hibernate.exception.ConstraintViolationException: 
-could not execute statement [Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_B ON PUBLIC.USER_USER(NAME NULLS FIRST) VALUES ( /* 1 */ 'Roberto Messa' )"; SQL statement:
-insert into user_user (email,name,role,id) values (?,?,?,default) [23505-224]] [insert into user_user (email,name,role,id) values (?,?,?,default)]
-	at io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest.givenParameters_createUser(UserTest.java:57)
-Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: 
-Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_B ON PUBLIC.USER_USER(NAME NULLS FIRST) VALUES ( /* 1 */ 'Roberto Messa' )"; SQL statement:
-insert into user_user (email,name,role,id) values (?,?,?,default) [23505-224]
-	at io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest.givenParameters_createUser(UserTest.java:57)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 2.406 s - in io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest

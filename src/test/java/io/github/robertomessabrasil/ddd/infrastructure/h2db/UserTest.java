@@ -20,10 +20,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserTest {
 
     private static EventObserver eventObserver = new EventObserver();
-    private static Transaction transaction = new Transaction();
     private static Server server;
+    private static Transaction transaction;
 
-    UserTest() {
+    UserTest() throws InfrastructureException {
+        this.transaction = new Transaction();
         ValidationListener validationListener = new ValidationListener();
         validationListener.addEvent(UserValidationEvent.class);
         this.eventObserver.subscribe(validationListener);
@@ -57,12 +58,11 @@ public class UserTest {
             createdUserEntity = userRepository.create(userEntity, this.eventObserver);
             this.transaction.commit();
         } catch (RuntimeException ex) {
-            System.out.println("aaaaaaaaaaaaaaaaa= " + ex.getMessage());
             this.transaction.rollBack();
         }
 
         assertNotNull(createdUserEntity);
-//        assertEquals(1, createdUserEntity.getId());
+        assertEquals(2, createdUserEntity.getId());
 
     }
 
