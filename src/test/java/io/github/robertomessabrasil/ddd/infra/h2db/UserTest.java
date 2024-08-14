@@ -1,13 +1,13 @@
-package io.github.robertomessabrasil.ddd.infrastructure.h2db;
+package io.github.robertomessabrasil.ddd.infra.h2db;
 
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserEntity;
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserRoleEnum;
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserRoleVO;
-import io.github.robertomessabrasil.dddad.domain.entity.user.event.UserValidationEvent;
-import io.github.robertomessabrasil.dddad.domain.exception.InfrastructureException;
+import io.github.robertomessabrasil.dddad.entity.user.UserEntity;
+import io.github.robertomessabrasil.dddad.entity.user.UserRoleEnum;
+import io.github.robertomessabrasil.dddad.entity.user.UserRoleVO;
+import io.github.robertomessabrasil.dddad.entity.user.event.UserValidationEvent;
 import io.github.robertomessabrasil.dddad.infra.h2db.repository.user.Transaction;
 import io.github.robertomessabrasil.dddad.infra.h2db.repository.user.UserRepository;
 import io.github.robertomessabrasil.dddad.listener.ValidationListener;
+import io.github.robertomessabrasil.jwatch.exception.InterruptException;
 import io.github.robertomessabrasil.jwatch.observer.EventObserver;
 import org.h2.tools.Server;
 import org.junit.jupiter.api.*;
@@ -36,7 +36,7 @@ public class UserTest {
 
     @Test
     @Order(1)
-    public void givenParameters_createUser() throws InfrastructureException {
+    public void givenParameters_createUser() {
 
         UserEntity createdUserEntity = null;
         UserRepository userRepository = new UserRepository(this.transaction);
@@ -57,19 +57,18 @@ public class UserTest {
             createdUserEntity = userRepository.create(userEntity, this.eventObserver);
             this.transaction.commit();
         } catch (RuntimeException ex) {
-            System.out.println("aaaaaaaaaaaaaaaaa= " + ex.getMessage());
             this.transaction.rollBack();
         }
 
         assertNotNull(createdUserEntity);
-//        assertEquals(1, createdUserEntity.getId());
+        assertEquals(1, createdUserEntity.getId());
 
     }
 
     @Test
     @Order(2)
     @Disabled
-    public void giverUserId_returnUser() throws InfrastructureException {
+    public void giverUserId_returnUser() throws InterruptException {
 
         Optional<UserEntity> userEntity = null;
         UserRepository userRepository = new UserRepository(this.transaction);

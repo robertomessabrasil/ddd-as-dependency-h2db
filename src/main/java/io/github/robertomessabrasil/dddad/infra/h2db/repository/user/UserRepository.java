@@ -1,12 +1,11 @@
 package io.github.robertomessabrasil.dddad.infra.h2db.repository.user;
 
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserEntity;
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserRoleEnum;
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserRoleVO;
-import io.github.robertomessabrasil.dddad.domain.exception.InfrastructureException;
-import io.github.robertomessabrasil.dddad.domain.repository.IUserRepository;
-import io.github.robertomessabrasil.dddad.domain.repository.event.UserRepositoryEvent;
+import io.github.robertomessabrasil.dddad.entity.user.UserEntity;
+import io.github.robertomessabrasil.dddad.entity.user.UserRoleEnum;
+import io.github.robertomessabrasil.dddad.entity.user.UserRoleVO;
 import io.github.robertomessabrasil.dddad.infra.h2db.repository.user.entity.UserJPAEntity;
+import io.github.robertomessabrasil.dddad.repository.IUserRepository;
+import io.github.robertomessabrasil.dddad.repository.event.UserRepositoryEvent;
 import io.github.robertomessabrasil.jwatch.exception.InterruptException;
 import io.github.robertomessabrasil.jwatch.observer.EventObserver;
 
@@ -16,18 +15,15 @@ public class UserRepository implements IUserRepository {
     private Transaction transaction;
 
     @Override
-    public UserEntity create(UserEntity userEntity, EventObserver eventObserver) throws InfrastructureException {
+    public UserEntity create(UserEntity userEntity, EventObserver eventObserver) {
         UserJPAEntity userJPAEntity = new UserJPAEntity();
         userJPAEntity.setName(userEntity.getName());
         userJPAEntity.setEmail(userEntity.getEmail());
         userJPAEntity.setRole(userEntity.getRole().getRoleEnum().getValue());
 
-        try {
-            this.transaction.getEntityManager().persist(userJPAEntity);
-            this.transaction.getEntityManager().flush();
-        } catch (RuntimeException ex0) {
-            throw new InfrastructureException(ex0);
-        }
+        this.transaction.getEntityManager().persist(userJPAEntity);
+        this.transaction.getEntityManager().flush();
+
         UserEntity createdUserEntity = new UserEntity();
 
         createdUserEntity.setId(userJPAEntity.getId());
@@ -39,7 +35,7 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public Optional<UserEntity> findById(int userId, EventObserver eventObserver) throws InfrastructureException {
+    public Optional<UserEntity> findById(int userId, EventObserver eventObserver) throws InterruptException {
 
         UserJPAEntity userJPAEntity = this.transaction.getEntityManager().find(UserJPAEntity.class, userId);
         if (userJPAEntity == null) {
@@ -51,11 +47,7 @@ public class UserRepository implements IUserRepository {
         userEntity.setName(userJPAEntity.getName());
         userEntity.setEmail(userJPAEntity.getEmail());
 
-        try {
-            userEntity.setRole(getUserRole(userJPAEntity.getRole(), eventObserver));
-        } catch (InterruptException e) {
-            throw new InfrastructureException(e);
-        }
+        userEntity.setRole(getUserRole(userJPAEntity.getRole(), eventObserver));
 
         return Optional.of(userEntity);
 
