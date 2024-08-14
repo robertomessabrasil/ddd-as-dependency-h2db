@@ -8,9 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/entity/UserJPAEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/entity/UserJPAEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/io/github/robertomessabrasil/ddd/infrastructure/h2db/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/github/robertomessabrasil/ddd/infrastructure/h2db/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/io/github/robertomessabrasil/ddd/infrastructure/h2db/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/github/robertomessabrasil/dddad/infra/h2db/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/github/robertomessabrasil/dddad/infra/h2db/repository/user/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/io/github/robertomessabrasil/ddd/infrastructure/h2db/UserTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +49,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;JUnit.UserTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.UserTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UserTest.givenParameters_createUser.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UserTest.giverUserId_returnUser.executor&quot;: &quot;Run&quot;,
     &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
@@ -53,7 +59,7 @@
     &quot;git-widget-placeholder&quot;: &quot;hibernate&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/home/wardog1/work/ddd-as-dependency-h2db/src/main/java/io/github/robertomessabrasil/ddd/infra&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/wardog1/tools/rabbitmq/demo-backend-api/pom.xml&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/wardog1/work/ddd-as-dependency-h2db/src/test/java/io/github/robertomessabrasil/ddd/infra/h2db&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -61,12 +67,32 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/io/github/robertomessabrasil/ddd/infra/h2db" />
+      <recent name="$PROJECT_DIR$/src/test/java/io/github/robertomessabrasil/ddd/infrastructure/h2db" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
   </component>
   <component name="RunManager" selected="Maven.clean, package">
+    <configuration name="UserTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ddd-as-dependency-h2db" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.github.robertomessabrasil.ddd.infra.h2db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.github.robertomessabrasil.ddd.infra.h2db" />
+      <option name="MAIN_CLASS_NAME" value="io.github.robertomessabrasil.ddd.infra.h2db.UserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ddd-as-dependency-h2db" />
       <extension name="coverage">
@@ -167,6 +193,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserTest (1)" />
         <item itemvalue="JUnit.UserTest" />
         <item itemvalue="JUnit.UserTest.giverUserId_returnUser" />
         <item itemvalue="JUnit.UserTest.givenParameters_createUser" />

@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 2.406 s - in io.github.robertomessabrasil.ddd.infrastructure.h2db.UserTest

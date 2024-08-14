@@ -1,22 +1,22 @@
 package io.github.robertomessabrasil.dddad.infra.h2db.repository.user;
 
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserEntity;
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserRoleEnum;
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserRoleVO;
-import io.github.robertomessabrasil.dddad.domain.exception.InfrastructureException;
-import io.github.robertomessabrasil.dddad.domain.repository.IUserRepository;
-import io.github.robertomessabrasil.dddad.domain.repository.event.UserRepositoryEvent;
+import io.github.robertomessabrasil.dddad.entity.user.UserEntity;
+import io.github.robertomessabrasil.dddad.entity.user.UserRoleEnum;
+import io.github.robertomessabrasil.dddad.entity.user.UserRoleVO;
 import io.github.robertomessabrasil.dddad.infra.h2db.repository.user.entity.UserJPAEntity;
+import io.github.robertomessabrasil.dddad.repository.IUserRepository;
+import io.github.robertomessabrasil.dddad.repository.event.UserRepositoryEvent;
 import io.github.robertomessabrasil.jwatch.exception.InterruptException;
 import io.github.robertomessabrasil.jwatch.observer.EventObserver;
 
+import java.util.List;
 import java.util.Optional;
 
 public class UserRepository implements IUserRepository {
     private Transaction transaction;
 
     @Override
-    public UserEntity create(UserEntity userEntity, EventObserver eventObserver) throws InfrastructureException {
+    public UserEntity create(UserEntity userEntity, EventObserver eventObserver) {
         UserJPAEntity userJPAEntity = new UserJPAEntity();
         userJPAEntity.setName(userEntity.getName());
         userJPAEntity.setEmail(userEntity.getEmail());
@@ -35,9 +35,13 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public Optional<UserEntity> findById(int userId, EventObserver eventObserver) throws InfrastructureException {
+    public Optional<UserEntity> findById(int userId, EventObserver eventObserver) throws InterruptException {
+
+        List<UserJPAEntity> students = this.transaction.getSession().createQuery("from UserJPAEntity", UserJPAEntity.class).list();
+        students.forEach(s -> System.out.println(s.getId()));
 
         UserJPAEntity userJPAEntity = this.transaction.getSession().find(UserJPAEntity.class, userId);
+
         if (userJPAEntity == null) {
             return Optional.empty();
         }
@@ -47,11 +51,7 @@ public class UserRepository implements IUserRepository {
         userEntity.setName(userJPAEntity.getName());
         userEntity.setEmail(userJPAEntity.getEmail());
 
-        try {
-            userEntity.setRole(getUserRole(userJPAEntity.getRole(), eventObserver));
-        } catch (InterruptException e) {
-            throw new InfrastructureException(e);
-        }
+        userEntity.setRole(getUserRole(userJPAEntity.getRole(), eventObserver));
 
         return Optional.of(userEntity);
 

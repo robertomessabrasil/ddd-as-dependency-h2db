@@ -1,6 +1,6 @@
 package io.github.robertomessabrasil.dddad.infra.h2db.repository.user;
 
-import io.github.robertomessabrasil.dddad.domain.exception.InfrastructureException;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -16,7 +16,6 @@ public class Transaction implements ITransaction {
 
     @Override
     public void begin() {
-        this.session = this.sessionFactory.openSession();
         this.transaction = session.beginTransaction();
     }
 
@@ -25,9 +24,6 @@ public class Transaction implements ITransaction {
         if (this.transaction.isActive()) {
             this.transaction.commit();
         }
-        if (this.session != null) {
-            this.session.close();
-        }
     }
 
     @Override
@@ -35,32 +31,33 @@ public class Transaction implements ITransaction {
         if (this.transaction.isActive()) {
             this.transaction.rollback();
         }
-        if (this.session != null) {
-            this.session.close();
-        }
     }
 
     public void close() {
+        if (this.session != null) {
+            this.session.close();
+        }
         if (this.registry != null) {
             StandardServiceRegistryBuilder.destroy(this.registry);
         }
     }
 
-    public Transaction() throws InfrastructureException {
+    public Transaction() {
         try {
             this.registry = new StandardServiceRegistryBuilder().configure().build();
             MetadataSources sources = new MetadataSources(this.registry);
             Metadata metadata = sources.getMetadataBuilder().build();
             this.sessionFactory = metadata.getSessionFactoryBuilder().build();
-        } catch (Exception e) {
+            this.session = this.sessionFactory.openSession();
+        } catch (HibernateException e) {
             if (this.registry != null) {
                 StandardServiceRegistryBuilder.destroy(this.registry);
             }
-            throw new InfrastructureException(e);
+            throw e;
         }
     }
 
     public Session getSession() {
-        return session;
+        return this.session;
     }
 }

@@ -1,18 +1,23 @@
-package io.github.robertomessabrasil.ddd.infrastructure.h2db;
+package io.github.robertomessabrasil.dddad.infra.h2db;
 
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserEntity;
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserRoleEnum;
-import io.github.robertomessabrasil.dddad.domain.entity.user.UserRoleVO;
-import io.github.robertomessabrasil.dddad.domain.entity.user.event.UserValidationEvent;
-import io.github.robertomessabrasil.dddad.domain.exception.InfrastructureException;
+import io.github.robertomessabrasil.dddad.entity.user.UserEntity;
+import io.github.robertomessabrasil.dddad.entity.user.UserRoleEnum;
+import io.github.robertomessabrasil.dddad.entity.user.UserRoleVO;
+import io.github.robertomessabrasil.dddad.entity.user.event.UserValidationEvent;
 import io.github.robertomessabrasil.dddad.infra.h2db.repository.user.Transaction;
 import io.github.robertomessabrasil.dddad.infra.h2db.repository.user.UserRepository;
+import io.github.robertomessabrasil.dddad.infra.h2db.repository.user.entity.UserJPAEntity;
 import io.github.robertomessabrasil.dddad.listener.ValidationListener;
+import io.github.robertomessabrasil.jwatch.exception.InterruptException;
 import io.github.robertomessabrasil.jwatch.observer.EventObserver;
 import org.h2.tools.Server;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,7 +28,7 @@ public class UserTest {
     private static Server server;
     private static Transaction transaction;
 
-    UserTest() throws InfrastructureException {
+    UserTest() {
         this.transaction = new Transaction();
         ValidationListener validationListener = new ValidationListener();
         validationListener.addEvent(UserValidationEvent.class);
@@ -37,7 +42,7 @@ public class UserTest {
 
     @Test
     @Order(1)
-    public void givenParameters_createUser() throws InfrastructureException {
+    public void givenParameters_createUser() {
 
         UserEntity createdUserEntity = null;
         UserRepository userRepository = new UserRepository(this.transaction);
@@ -55,29 +60,31 @@ public class UserTest {
             userEntity.setRole(userRoleVO);
 
             createdUserEntity = userRepository.create(userEntity, this.eventObserver);
-            createdUserEntity = userRepository.create(userEntity, this.eventObserver);
+
             this.transaction.commit();
-        } catch (RuntimeException ex) {
+        } catch (Exception ex) {
             this.transaction.rollBack();
         }
 
-        assertNotNull(createdUserEntity);
-        assertEquals(2, createdUserEntity.getId());
+        this.list();
+
+        int userId = 1;
+        assertNotNull(createdUserEntity, () -> "createdUser must be not null");
+        assertEquals(userId, createdUserEntity.getId(), () -> "createdUser.getId() must be equal to " + userId);
 
     }
 
     @Test
     @Order(2)
-    @Disabled
-    public void giverUserId_returnUser() throws InfrastructureException {
+//    @Disabled
+    public void giverUserId_returnUser() throws InterruptException {
 
-        Optional<UserEntity> userEntity = null;
         UserRepository userRepository = new UserRepository(this.transaction);
         int userId = 1;
-        userEntity = userRepository.findById(userId, this.eventObserver);
+        Optional<UserEntity> userEntity = userRepository.findById(userId, this.eventObserver);
 
-        assertNotNull(userEntity);
-        assertTrue(userEntity.isPresent());
+        assertNotNull(userEntity, () -> "userEntity must be not null");
+        assertTrue(userEntity.isPresent(), () -> "userEntity must be present");
 
     }
 
@@ -87,6 +94,11 @@ public class UserTest {
         if (server != null) {
             server.stop();
         }
+    }
+
+    private void list() {
+        List<UserJPAEntity> users = this.transaction.getSession().createQuery("from UserJPAEntity", UserJPAEntity.class).list();
+        users.forEach(s -> System.out.println(s.getEmail()));
     }
 
 }
